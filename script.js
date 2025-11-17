@@ -10,7 +10,8 @@ function agregarTarea() {
     if (nuevaTarea !== "") {  
         item = document.createElement("li");
         item.innerHTML = `<span>${nuevaTarea}</span>
-                        <button class="delete-btn">Eliminar</button>`;
+                        <button class="delete-btn">❌</button>
+                        <button class="completar-tarea">✅</button>`;
 
         const eliminarBtn = item.querySelector(".delete-btn");
         eliminarBtn.addEventListener("click", eliminarTarea);
@@ -33,7 +34,8 @@ Input.addEventListener("keypress", function (e) {
 
 Lista.addEventListener("click", function (e) {
     if (e.target.tagName === "SPAN") {
-        e.target.classList.toggle("complete"); 
+        e.target.classList.toggle("complete");
+        
     }
 });
 
@@ -42,3 +44,13 @@ Lista.addEventListener("click", function (e) {
         e.target.parentElement.remove();
     }
 });
+
+Lista.addEventListener("click", function (e) {
+    if (e.target.classList.contains("completar-tarea")){
+        const tarea = e.target.closest("li").querySelector("span");
+
+        if (tarea){
+            tarea.classList.toggle("complete")
+        }
+    }
+})

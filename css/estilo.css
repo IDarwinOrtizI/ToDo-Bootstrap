@@ -1,4 +1,8 @@
 .complete {
     text-decoration: line-through;  
-    color: gray;  
+    color:black;  
+}
+
+li{
+    list-style: none;
 }
